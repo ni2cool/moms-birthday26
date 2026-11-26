@@ -1,0 +1,59 @@
+:root {
+  /* Colors — tweak these to change the whole theme */
+  --bg-outside: #2b2730; /* desktop background around the phone */
+  --bg: #fff8f5; /* page background inside the phone */
+  --text: #4a3f45;
+  --heading: #2a1f24;
+  --accent: #d9507a;
+  --accent-soft: #fbe3ea;
+  --border: #e9d6dc;
+
+  --sans: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+
+  font: 16px/1.5 var(--sans);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+}
+
+body {
+  background: var(--bg);
+}
+
+#root {
+  min-height: 100dvh;
+}
+
+h1,
+h2,
+h3 {
+  color: var(--heading);
+  line-height: 1.2;
+  margin: 0 0 0.5rem;
+}
+
+p {
+  margin: 0 0 1rem;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+button {
+  font: inherit;
+}

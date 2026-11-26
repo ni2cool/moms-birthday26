@@ -1,0 +1,184 @@
+/* ------------------------------------------------------------------
+   PHONE (default): the "phone" frame is invisible and the content
+   simply fills the screen.
+   ------------------------------------------------------------------ */
+.stage {
+  min-height: 100dvh;
+}
+
+.phone {
+  position: relative;
+  min-height: 100dvh;
+  background: var(--bg);
+}
+
+.phone-notch,
+.phone-home-bar {
+  display: none;
+}
+
+.screen {
+  min-height: 100dvh;
+  /* Respect iPhone notch / home bar areas */
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* ------------------------------------------------------------------
+   DESKTOP PREVIEW (wider than a phone): show the content inside a
+   phone-shaped frame so you can see what it looks like on mobile.
+   ------------------------------------------------------------------ */
+@media (min-width: 600px) {
+  body {
+    background: var(--bg-outside);
+  }
+
+  .stage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px 16px;
+  }
+
+  .phone {
+    width: 390px; /* iPhone 14/15 width */
+    height: 844px; /* iPhone 14/15 height */
+    max-height: calc(100dvh - 64px);
+    min-height: 0;
+    border-radius: 54px;
+    border: 12px solid #111;
+    box-shadow:
+      0 0 0 2px #444,
+      0 30px 60px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+  }
+
+  .phone-notch {
+    display: block;
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 34px;
+    background: #111;
+    border-radius: 20px;
+    z-index: 10;
+  }
+
+  .phone-home-bar {
+    display: block;
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 130px;
+    height: 5px;
+    background: #111;
+    opacity: 0.6;
+    border-radius: 3px;
+    z-index: 10;
+  }
+
+  .screen {
+    height: 100%;
+    min-height: 0;
+    overflow-y: auto;
+    padding-top: 44px; /* room for the notch, like a real status bar */
+    padding-bottom: 24px;
+    scrollbar-width: none;
+  }
+
+  .screen::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* ------------------------------------------------------------------
+   PAGE CONTENT (placeholders — replace with your own stuff)
+   ------------------------------------------------------------------ */
+.top-bar {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  padding: 12px 20px;
+  padding-top: max(12px, env(safe-area-inset-top));
+  background: color-mix(in srgb, var(--bg) 85%, transparent);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
+  text-align: center;
+  font-weight: 600;
+  color: var(--heading);
+}
+
+.hero {
+  padding: 24px 20px 8px;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 2rem;
+  margin-top: 20px;
+}
+
+.subtitle {
+  color: var(--text);
+  opacity: 0.8;
+}
+
+.block {
+  padding: 24px 20px;
+  border-top: 1px dashed var(--border);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1;
+  border: 2px dashed var(--accent);
+  border-radius: 16px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-align: center;
+  padding: 8px;
+}
+
+.placeholder-tall {
+  aspect-ratio: 4 / 5;
+}
+
+.placeholder-wide {
+  aspect-ratio: 16 / 10;
+  margin-bottom: 16px;
+}
+
+.cta {
+  display: block;
+  width: 100%;
+  min-height: 48px; /* comfy tap target for thumbs */
+  border: none;
+  border-radius: 999px;
+  background: var(--accent);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.cta:active {
+  transform: scale(0.98);
+}
+
+.footer {
+  padding: 32px 20px;
+  text-align: center;
+  font-size: 0.9rem;
+  opacity: 0.7;
+}
